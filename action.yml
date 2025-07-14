@@ -19,6 +19,10 @@ inputs:
     description: Icon emoji
     required: false
     default: ":tractor:"
+  branch:
+    description: Branch name to compare with
+    required: false
+    default: "master"
 runs:
   using: composite
   steps:
@@ -27,8 +31,8 @@ runs:
       shell: bash
       run: |
         SHA_7=$(git rev-parse --short HEAD)
-        git fetch origin master
-        LAST_COMMIT=$(git rev-parse origin/master)
+        git fetch origin ${{ inputs.branch }}
+        LAST_COMMIT=$(git rev-parse origin/${{ inputs.branch }})
         echo "last_commit_sha=$LAST_COMMIT" >> $GITHUB_OUTPUT
         echo "sha_7=$SHA_7" >> $GITHUB_OUTPUT
         echo "Last commit SHA: $LAST_COMMIT"
