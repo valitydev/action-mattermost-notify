@@ -38,7 +38,7 @@ runs:
         echo "Last commit SHA: $LAST_COMMIT"
         echo "Current commit SHA: ${{ github.sha }}"
     - name: Get current PR
-      uses: 8BitJonny/gh-get-current-pr@3.0.0
+      uses: 8BitJonny/gh-get-current-pr@4.0.0
       id: PR
     - name: Deployment Notification
       if: ${{ github.sha == steps.last_commit.outputs.last_commit_sha }}
